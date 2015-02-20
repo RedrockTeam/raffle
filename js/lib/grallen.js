@@ -743,7 +743,7 @@ function animateTransformFrame (obj,rotateX,original,each,num){
 
         original -= each;
 
-        var color = Math.ceil(60-Math.abs(original));
+        var color = Math.ceil((60-Math.abs(original))/0.9);
 
         obj.css("transform","rotateX("+original+"deg)").css("color","rgb("+color+","+color+","+color+")");
 
@@ -759,7 +759,7 @@ function animateTransformFrame (obj,rotateX,original,each,num){
 
         rotateX -= 15;
 
-        var color = Math.ceil(60-Math.abs(original));
+        var color = Math.ceil((60-Math.abs(original))/0.9);
 
         obj.css("transform","rotateX("+rotateX+"deg)").css("color","rgb("+color+","+color+","+color+")");
 

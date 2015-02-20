@@ -24,7 +24,7 @@
     <favorites_list name="barrage" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.25816023">
+    <splitter split-orientation="horizontal" split-proportion="0.548368">
       <split-first>
         <leaf>
           <file leaf-file-name="raffle.js" pinned="false" current-in-tab="false">
@@ -52,8 +52,8 @@
           <file leaf-file-name="raffle.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/raffle.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="1.7763975" vertical-offset="264" max-vertical-offset="1166">
-                  <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+                <state vertical-scroll-proportion="0.5945946" vertical-offset="0" max-vertical-offset="629">
+                  <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -86,8 +86,8 @@
           <file leaf-file-name="grallen.js" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/js/lib/grallen.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state vertical-scroll-proportion="3.2239583" vertical-offset="16145" max-vertical-offset="17116">
-                  <caret line="762" column="0" selection-start-line="762" selection-start-column="0" selection-end-line="762" selection-end-column="0" />
+                <state vertical-scroll-proportion="0.8712121" vertical-offset="16211" max-vertical-offset="17116">
+                  <caret line="763" column="0" selection-start-line="763" selection-start-column="0" selection-end-line="764" selection-end-column="0" />
                   <folding />
                 </state>
               </provider>
@@ -108,8 +108,8 @@
         <option value="$PROJECT_DIR$/style/raffle.css" />
         <option value="$PROJECT_DIR$/style/lib/slotMachine.css" />
         <option value="$PROJECT_DIR$/js/raffle.js" />
-        <option value="$PROJECT_DIR$/raffle.html" />
         <option value="$PROJECT_DIR$/js/lib/grallen.js" />
+        <option value="$PROJECT_DIR$/raffle.html" />
       </list>
     </option>
   </component>
@@ -306,10 +306,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.74702704" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24108107" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -683,18 +683,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/raffle.html">
+    <entry file="file://$PROJECT_DIR$/js/lib/grallen.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.7763975" vertical-offset="264" max-vertical-offset="1166">
-          <caret line="25" column="25" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="11107" max-vertical-offset="17116">
+          <caret line="514" column="8" selection-start-line="514" selection-start-column="8" selection-end-line="514" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/lib/grallen.js">
+    <entry file="file://$PROJECT_DIR$/raffle.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="3.2239583" vertical-offset="16145" max-vertical-offset="17116">
-          <caret line="762" column="0" selection-start-line="762" selection-start-column="0" selection-end-line="762" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.5945946" vertical-offset="0" max-vertical-offset="629">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
