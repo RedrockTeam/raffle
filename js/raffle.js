@@ -14,15 +14,7 @@ window.onload = function(){
 
     //滚上默认数据
 
-    slotMachine(SlotMachine.winning,7);
-
-    //给按钮绑定点击事件
-
-    SlotMachine.button.on("click",function(){
-
-        drawARaffle(SlotMachine.winning);
-
-    });
+    slotMachine(SlotMachine,7);
 
 };
 

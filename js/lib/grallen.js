@@ -518,6 +518,10 @@ var list;
 
 function drawARaffle(obj){
 
+    //动画开始移除按钮点击事件
+
+    $(obj.button).unbind("click").css("cursor","default");
+
     //中奖对象 编号
 
     var winnerNum = Math.ceil(Math.random()*200)+100;
@@ -564,11 +568,11 @@ function slotMachine(obj,winnerNum){
 
             html:newCandidate,
 
-        }).appendTo(obj);
+        }).appendTo($(obj.winning));
 
         //获取候选人
 
-        candidate = obj.children("p");
+        candidate = $(obj.winning).children("p");
 
         //开始滚动
 
@@ -590,7 +594,11 @@ function slotMachine(obj,winnerNum){
 
             if(num > 7){
 
-                p.remove();
+                setTimeout(function(){
+
+                    p.remove();
+
+                },20);
 
                 break;
 
@@ -633,6 +641,44 @@ function slotMachine(obj,winnerNum){
 
         }
 
+        //选中框 动画
+
+        //var v = 200;
+        //
+        //if(winnerNum > 1){
+        //
+        //    var t = ((52-(130/(winnerNum+1)))/(65*winnerNum+v));
+        //
+        //    console.log(t);
+        //
+        //    $(obj.frame).animate({
+        //
+        //        top:(t*65*winnerNum+160)+"px"
+        //
+        //    },t,"linear",function(){
+        //
+        //        $(obj.frame).animate({
+        //
+        //            top:"212px"
+        //
+        //        },(time*0.8-t*1000),"linear",function(){
+        //
+        //            $(obj.frame).animate({
+        //
+        //                top:(212-130*time)+"px"
+        //
+        //            },(time*0.8-t*1000),"linear")
+        //
+        //        });
+        //
+        //    });
+        //
+        //}else{
+        //
+        //
+        //
+        //}
+
         //该动画执行完成 执行下一个动画
 
         setTimeout(function(){
@@ -646,6 +692,18 @@ function slotMachine(obj,winnerNum){
             slotMachine(obj,winnerNum)
 
         },time);
+
+    }else{
+
+        //动画执行完毕 给按钮绑定点击事件
+
+        $(obj.button).on("click",function(){
+
+            animateButton($(obj.button));
+
+            drawARaffle(obj);
+
+        }).css("cursor","pointer");
 
     }
 
@@ -767,6 +825,25 @@ function animateTransformFrame (obj,rotateX,original,each,num){
 
 }
 
+//按钮动画效果
+
+function animateButton (obj){
+
+    obj.animate({
+
+        top:"254px"
+
+    },250,"linear",function(){
+
+        obj.animate({
+
+            top:"207px"
+
+        },800,"linear");
+
+    });
+
+}
 
 
 
