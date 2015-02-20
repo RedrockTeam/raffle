@@ -1,0 +1,55 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+    width: 100%;
+    min-width: 980px;
+    min-height: 840px;
+}
+body{
+    background: url("../img/background.jpg") no-repeat;
+    height: 100%;
+    background-size:100% 100%;
+}
+#barrage{
+    padding: 155px 0 0;
+    position: relative;
+    z-index: 200;
+}
+#shadow{
+    width: 980px;
+    margin: 0 auto;
+    position: relative;
+    top: -80px;
+    z-index: 100;
+}
+
+#shadow img{
+    width: 980px;
+}
+.barrage{
+  white-space:nowrap;
+  position: absolute;
+  font-size: 24px;
+  line-height: 36px;
+  color: #fff;
+}
+.fixBarrage{
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+.rainbow{
+  font-weight: bold;
+  background: -webkit-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+  background: -o-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+  background: -moz-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+  background: linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+  color: transparent;
+  -webkit-background-clip: text;
+}
+#example_video_1{
+  margin: 0 auto;
+}

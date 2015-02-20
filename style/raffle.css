@@ -1,0 +1,15 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+    height: 100%;
+    width: 100%;
+    min-width: 980px;
+    min-height: 840px;
+}
+body{
+    background: url("../img/raffleBackground.jpg") no-repeat;
+    height: 100%;
+    background-size:100% 100%;
+}
