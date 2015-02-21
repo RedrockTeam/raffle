@@ -14,7 +14,7 @@ window.onload = function(){
 
     //滚上默认数据
 
-    slotMachine(SlotMachine,7);
+    slotMachine(SlotMachine,8);
 
 };
 

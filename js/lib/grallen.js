@@ -518,13 +518,15 @@ var list;
 
 function drawARaffle(obj){
 
+    $($(".winning p")[4]).css("color","#000");
+
     //动画开始移除按钮点击事件
 
     $(obj.button).unbind("click").css("cursor","default");
 
     //中奖对象 编号
 
-    var winnerNum = Math.ceil(Math.random()*200)+100;
+    var winnerNum = Math.ceil(Math.random()*1000)+100;
 
     slotMachine(obj,winnerNum);
 
@@ -598,7 +600,7 @@ function slotMachine(obj,winnerNum){
 
                     p.remove();
 
-                },20);
+                },50);
 
                 break;
 
@@ -643,31 +645,29 @@ function slotMachine(obj,winnerNum){
 
         //选中框 动画
 
-        //var v = 200;
+        //var v = 600;
         //
-        //if(winnerNum > 1){
+        //if(winnerNum > 0){
         //
-        //    var t = ((52-(130/(winnerNum+1)))/(65*winnerNum+v));
-        //
-        //    console.log(t);
+        //    var t = ((52-((v*0.2)/(winnerNum+1)))/(65*winnerNum+v));
         //
         //    $(obj.frame).animate({
         //
-        //        top:(t*65*winnerNum+160)+"px"
+        //        top:(t*65*winnerNum+250)+"px"
         //
-        //    },t,"linear",function(){
+        //    },t*1000,"linear",function(){
         //
         //        $(obj.frame).animate({
         //
-        //            top:"212px"
+        //            top:"302px"
         //
-        //        },(time*0.8-t*1000),"linear",function(){
+        //        },(time*0.9-t*1000),"linear",function(){
         //
         //            $(obj.frame).animate({
         //
-        //                top:(212-130*time)+"px"
+        //                top:(302-v*time*0.0001)+"px"
         //
-        //            },(time*0.8-t*1000),"linear")
+        //            },(time*0.1),"linear");
         //
         //        });
         //
@@ -675,7 +675,29 @@ function slotMachine(obj,winnerNum){
         //
         //}else{
         //
+        //    var t = ((52-((v*0.2)/(winnerNum+1)))/(65*winnerNum+v));
         //
+        //    $(obj.frame).animate({
+        //
+        //        top:(t*65*winnerNum+250)+"px"
+        //
+        //    },t*1000,"linear",function(){
+        //
+        //        $(obj.frame).animate({
+        //
+        //            top:"302px"
+        //
+        //        },(time*0.8-t*1000),"linear",function(){
+        //
+        //            $(obj.frame).animate({
+        //
+        //                top:"250px"
+        //
+        //            },(52/v)*1000,"linear")
+        //
+        //        });
+        //
+        //    });
         //
         //}
 
@@ -695,7 +717,17 @@ function slotMachine(obj,winnerNum){
 
     }else{
 
-        //动画执行完毕 给按钮绑定点击事件
+        //动画执行完毕
+
+        //给中奖人添加css
+
+        setTimeout(function(){
+
+            $($(".winning p")[4]).css("color","#fff");
+
+        },400);
+
+        // 给按钮绑定点击事件
 
         $(obj.button).on("click",function(){
 
