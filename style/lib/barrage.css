@@ -1,0 +1,22 @@
+
+.barrage{
+    white-space:nowrap;
+    position: absolute;
+    font-size: 24px;
+    line-height: 36px;
+    color: #fff;
+}
+.fixBarrage{
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+.rainbow {
+    font-weight: bold;
+    background: -webkit-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+    background: -o-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+    background: -moz-linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+    background: linear-gradient(210deg, #FF3F30, #008BFF, #00D8FF, #80CF01, #F6BD38, #FF6000, #9000C1);
+    color: transparent;
+    -webkit-background-clip: text;
+}

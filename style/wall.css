@@ -13,22 +13,17 @@ body{
     height: 100%;
     background-size:100% 100%;
 }
-#barrage{
-    padding: 155px 0 0;
-    position: relative;
-    z-index: 200;
-}
-#shadow{
-    width: 980px;
+.container{
+    width: 900px;
+    height: 560px;
+    background-color: rgba(256,256,256,0.3);
     margin: 0 auto;
+    padding: 20px;
     position: relative;
-    top: -80px;
-    z-index: 100;
+    top: 120px;
 }
-
-#shadow img{
-    width: 980px;
-}
-#example_video_1{
-  margin: 0 auto;
+.wall{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(256,256,256,0.7);
 }

@@ -38,3 +38,9 @@
     top: 207px;
     left: 781px;
 }
+.line{
+    height: 1px;
+    background-color: rgba(256,256,256,0.2);
+    position: relative;
+    border-top: 1px solid rgba(0,0,0,0.2);
+}
