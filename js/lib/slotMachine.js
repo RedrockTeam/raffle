@@ -75,7 +75,9 @@ function slotMachine(obj,winnerNum){
 
                 "top": "-70px",
                 "color": "#000",
-                "transform": "rotateX(60deg)"
+                "transform": "rotateX(60deg)",
+                "padding" : "0 auto",
+                "width" : "450px"
 
             },
 
