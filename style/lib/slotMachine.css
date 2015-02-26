@@ -4,7 +4,6 @@
     height: 593px;
     margin: 0 auto;
     position: relative;
-    top: 120px;
     background: url("../../img/raffle.png") no-repeat;
 }
 .slotMachine .winning{
@@ -40,7 +39,7 @@
 }
 .line{
     height: 1px;
-    background-color: rgba(256,256,256,0.2);
+    background-color: rgba(256,256,256,0.1);
     position: relative;
-    border-top: 1px solid rgba(0,0,0,0.2);
+    border-top: 1px solid rgba(0,0,0,0.1);
 }

@@ -1,6 +1,20 @@
 
 window.onload = function(){
 
+	//轮播器部分
+
+	var $rotator = $(".rotator");
+
+	$(".left").on("click",function(){
+
+		$rotator.css("")
+
+	});
+
+
+
+	//弹幕部分
+
 	//创建弹幕幕布
 
 	var Screen = creatScreen($("#example_video_1"));
@@ -25,6 +39,93 @@ window.onload = function(){
 		}
 
 	},50);
+
+
+	//上墙部分
+
+	var data = creatWall($("#wall")[0]);
+
+	var Array = data.congestionArray;
+
+	var waitComment = [];            //等待队列
+
+	//及时输出等待数组中的评论
+
+	setInterval(function(){
+
+		outputOnTime(data.wall,waitComment,Array,clearBool);
+
+	},1000);
+
+	//为刷子帮上点击事件
+
+	data.brush.on("click",function(){
+
+		clearBool = true;
+
+	});
+
+
+	//老虎机部分
+
+	//参加活动名单
+
+	list  = ["grallen","cindy","betty","james","allen","cody","coco","deff","green","iverson"];
+
+	//建立老虎机
+
+	var SlotMachine = creatSlotMachine($(".slotMachineContainer")[0]);
+
+	//滚上默认数据
+
+	slotMachine(SlotMachine,8,list);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	//模拟测试数据
+
+	setInterval(function(){
+
+		var i = Math.ceil(Math.random()*20);
+
+		var char = "我要上墙我要上墙我要上墙我要上墙我要上墙";
+
+		var comment = creatComment(data.wall,char.substr(0,i));
+
+		onTheWall(comment.comment,comment.size,Array,waitComment);
+
+	},1300);
+
+	setInterval(function(){
+
+		var i = Math.ceil(Math.random()*20);
+
+		var char = "我要上墙我要上墙我要上墙我要上墙我要上墙";
+
+		var comment = creatComment(data.wall,char.substr(0,i));
+
+		onTheWall(comment.comment,comment.size,Array,waitComment);
+
+	},3000);
+
+
+
 
 
 	//测试弹幕

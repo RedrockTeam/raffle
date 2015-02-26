@@ -174,64 +174,6 @@ function slotMachine(obj,winnerNum){
 
         }
 
-        //选中框 动画
-
-        //var v = 600;
-        //
-        //if(winnerNum > 0){
-        //
-        //    var t = ((52-((v*0.2)/(winnerNum+1)))/(65*winnerNum+v));
-        //
-        //    $(obj.frame).animate({
-        //
-        //        top:(t*65*winnerNum+250)+"px"
-        //
-        //    },t*1000,"linear",function(){
-        //
-        //        $(obj.frame).animate({
-        //
-        //            top:"302px"
-        //
-        //        },(time*0.9-t*1000),"linear",function(){
-        //
-        //            $(obj.frame).animate({
-        //
-        //                top:(302-v*time*0.0001)+"px"
-        //
-        //            },(time*0.1),"linear");
-        //
-        //        });
-        //
-        //    });
-        //
-        //}else{
-        //
-        //    var t = ((52-((v*0.2)/(winnerNum+1)))/(65*winnerNum+v));
-        //
-        //    $(obj.frame).animate({
-        //
-        //        top:(t*65*winnerNum+250)+"px"
-        //
-        //    },t*1000,"linear",function(){
-        //
-        //        $(obj.frame).animate({
-        //
-        //            top:"302px"
-        //
-        //        },(time*0.8-t*1000),"linear",function(){
-        //
-        //            $(obj.frame).animate({
-        //
-        //                top:"250px"
-        //
-        //            },(52/v)*1000,"linear")
-        //
-        //        });
-        //
-        //    });
-        //
-        //}
-
         //该动画执行完成 执行下一个动画
 
         setTimeout(function(){
