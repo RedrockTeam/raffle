@@ -85,10 +85,6 @@ function slide (obj,text,textStyle,slideStyle){
         textStyle = arguments[2] ? arguments[2] : {};
         slideStyle = arguments[3] ? arguments[3] : "slide";
 
-        //最大字体大小限制
-
-        textStyle.font_size = textStyle.font_size > 28 ? 28 : textStyle.font_size;
-
         //弹幕初始化
 
         var dom = $("<div>",{
@@ -99,10 +95,7 @@ function slide (obj,text,textStyle,slideStyle){
 
             css:{
 
-                "top": heightNum*36+"px",				//弹幕高度
-                "font-size": textStyle.font_size+"px",	//弹幕字体大小
-                "font-weight": textStyle.font_weight,	//弹幕字体粗细
-                "font-family": textStyle.font_family,	//弹幕字体
+                "top": heightNum*40+"px",				//弹幕高度
 
             },
 
@@ -120,10 +113,7 @@ function slide (obj,text,textStyle,slideStyle){
 
         textColor(dom,textStyle.color);
 
-        var ran = Math.random()-0.5;                    //随机数
-        var v = 0.15+Math.abs(ran)*ran*0.2;				//弹幕速度
         var width = dom.width();						//弹幕长度判断
-        var time = (obj.width()+width)/v;				//弹幕动画时间
 
         //弹幕类型判断
 
@@ -131,7 +121,7 @@ function slide (obj,text,textStyle,slideStyle){
 
             //滑动弹幕
 
-            var banTime = (width+500)/v;				//占用队列时间
+            var banTime = (width+400)/(obj.width()+width)*12000;				//占用队列时间
 
             //队列占用中
 
@@ -161,27 +151,27 @@ function slide (obj,text,textStyle,slideStyle){
 
             },banTime);
 
-            //滑动弹幕发射准备
+            //滑动弹幕发射
 
-            dom.css("left",obj.width());
+            dom.css("left",obj.width()).css("transform","translateX("+parseInt(-obj.width()-width)+"px)");
 
             //滑动弹幕发射
 
-            dom.animate({
-
-                left:-width,
-
-            },time,"linear",function(){
-
-                //弹幕结束，删除结点
-
-                dom.remove();
-
-                //删除行进队列中数据
-
-                delete UnderwayQueue[dom.attr("slideNum")];
-
-            });
+            //dom.animate({
+            //
+            //    left:-width,
+            //
+            //},time,"linear",function(){
+            //
+            //    //弹幕结束，删除结点
+            //
+            //    dom.remove();
+            //
+            //    //删除行进队列中数据
+            //
+            //    delete UnderwayQueue[dom.attr("slideNum")];
+            //
+            //});
 
         }else{
 
@@ -285,20 +275,6 @@ function creatScreen(obj){
             html:"弹幕支持 &nbsp;&nbsp;@ RedRock . Grallen ",
 
         }).appendTo(obj);
-
-        //弹幕队列初始化
-
-        var newLength = parseInt(Screen.height()/36);
-
-        slideQueue.length = newLength;
-        fixQueue.length = newLength;
-
-        for (var i = newLength - 1; i >= 0; i--) {
-
-            slideQueue[i] = 1;
-            fixQueue[i] = 1;
-
-        };
 
         //对弹幕容器添加绑定时间
 
@@ -446,7 +422,7 @@ function zoom(obj){
     //改变弹幕队列长度
 
     var oldLength = fixQueue.length;
-    var newLength = parseInt(obj.height()/36);
+    var newLength = parseInt(obj.height()/40);
 
     //设置新的队列长度
 
@@ -960,7 +936,7 @@ var list;
 
 function drawARaffle(obj){
 
-    $($(".winning p")[4]).css("color","#000");
+    $($(".winning p")[2]).removeClass("pitch");
 
     //动画开始移除按钮点击事件
 
@@ -1000,35 +976,13 @@ function slotMachine(obj,winnerNum,list){
 
         list.push(newCandidate);
 
-        //添加线
-
-        $("<div>",{
-
-            css:{
-
-                "top": "-35px"
-
-            },
-
-            "class":"line"
-
-        }).appendTo($(obj.winning));
-
         //添加新的候选人
 
         $("<p>",{
 
-            css:{
-
-                "top": "-70px",
-                "color": "#000",
-                "transform": "rotateX(60deg)",
-                "padding" : "0 auto",
-                "width" : "450px"
-
-            },
-
             "num":0,
+
+            "class":"candidate",
 
             html:newCandidate
 
@@ -1064,7 +1018,7 @@ function slotMachine(obj,winnerNum,list){
 
             //删除多余节点
 
-            if(num > 7){
+            if(num > 4){
 
                 setTimeout(function(){
 
@@ -1082,21 +1036,17 @@ function slotMachine(obj,winnerNum,list){
 
             switch (num){
                 case 0:
-                    topPX = "-20px";lineTopPX="10px";transformDEG = 60;break;
+                    topPX = "-75px";break;
                 case 1:
-                    topPX = "34px";lineTopPX="72px";transformDEG = 45;break;
+                    topPX = "-5px";break;
                 case 2:
-                    topPX = "95px";lineTopPX="141px";transformDEG = 30;break;
+                    topPX = "71px";break;
                 case 3:
-                    topPX = "160px";lineTopPX="203px";transformDEG = 15;break;
+                    topPX = "148px";break;
                 case 4:
-                    topPX = "225px";lineTopPX="271px";transformDEG = 0;break;
-                case 5:
-                    topPX = "286px";lineTopPX="332px";transformDEG = -15;break;
-                case 6:
-                    topPX = "340px";lineTopPX="384px";transformDEG = -30;break;
+                    topPX = "220px";break;
                 default :
-                    topPX = "390px";lineTopPX="434px";transformDEG = -45;break;
+                    topPX = "390px";break;
             }
 
             //当前节点的编号更新
@@ -1104,8 +1054,6 @@ function slotMachine(obj,winnerNum,list){
             p.attr("num",++num);
 
             //开始滚动
-
-            animateTransform (p,transformDEG,time);
 
             p.animate({
 
@@ -1143,7 +1091,7 @@ function slotMachine(obj,winnerNum,list){
 
         setTimeout(function(){
 
-            $($(".winning p")[4]).css("color","#fff");
+            $($(".winning p")[2]).addClass("pitch");
 
         },400);
 
@@ -1226,56 +1174,56 @@ function creatSlotMachine (obj){
 }
 
 //3D旋转动画 每次调用旋转15度 (一次性函数) 5帧
-
-function animateTransform (obj,rotateX,time) {
-
-    if(time < 50){
-
-        rotateX += 15 ;
-
-        obj.css("transform","rotateX("+rotateX+"deg)");
-
-    }else{
-
-        var frameNum = time*0.02;
-
-        var eachRotateX = 15/frameNum;
-
-        animateTransformFrame(obj,rotateX,rotateX,eachRotateX,frameNum);
-
-    }
-
-}
-
-function animateTransformFrame (obj,rotateX,original,each,num){
-
-    if(num > 1){
-
-        original -= each;
-
-        var color = Math.ceil((60-Math.abs(original))/0.9);
-
-        obj.css("transform","rotateX("+original+"deg)").css("color","rgb("+color+","+color+","+color+")");
-
-        num--;
-
-        setTimeout(function(){
-
-            animateTransformFrame (obj,rotateX,original,each,num);
-
-        },50);
-
-    }else{
-
-        rotateX -= 15;
-
-        var color = Math.ceil((60-Math.abs(original))/0.9);
-
-        obj.css("transform","rotateX("+rotateX+"deg)").css("color","rgb("+color+","+color+","+color+")");
-
-    }
-
-}
+//
+//function animateTransform (obj,rotateX,time) {
+//
+//    if(time < 50){
+//
+//        rotateX += 15 ;
+//
+//        obj.css("transform","rotateX("+rotateX+"deg)");
+//
+//    }else{
+//
+//        var frameNum = time*0.02;
+//
+//        var eachRotateX = 15/frameNum;
+//
+//        animateTransformFrame(obj,rotateX,rotateX,eachRotateX,frameNum);
+//
+//    }
+//
+//}
+//
+//function animateTransformFrame (obj,rotateX,original,each,num){
+//
+//    if(num > 1){
+//
+//        original -= each;
+//
+//        var color = Math.ceil((60-Math.abs(original))/0.9);
+//
+//        obj.css("transform","rotateX("+original+"deg)").css("color","rgb("+color+","+color+","+color+")");
+//
+//        num--;
+//
+//        setTimeout(function(){
+//
+//            animateTransformFrame (obj,rotateX,original,each,num);
+//
+//        },50);
+//
+//    }else{
+//
+//        rotateX -= 15;
+//
+//        var color = Math.ceil((60-Math.abs(original))/0.9);
+//
+//        obj.css("transform","rotateX("+rotateX+"deg)").css("color","rgb("+color+","+color+","+color+")");
+//
+//    }
+//
+//}
 
 //按钮动画效果
 
@@ -1283,13 +1231,13 @@ function animateButton (obj){
 
     obj.animate({
 
-        top:"254px"
+        top:"264px"
 
     },250,"linear",function(){
 
         obj.animate({
 
-            top:"207px"
+            top:"225px"
 
         },800,"linear");
 

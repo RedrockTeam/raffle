@@ -21,7 +21,7 @@ p{
     height: 720px;
     margin:0 auto;
     position: relative;
-    top: 120px;
+    top: 140px;
 }
 .container .left,.container .right{
     width: 70px;
@@ -29,16 +29,12 @@ p{
     cursor: pointer;
     position: absolute;
     top: 265px;
-    display: none;
 }
 .left{
     left: -80px;
 }
 .right{
     right: -80px;
-}
-.toBarrage,.toWall,.toSlotMachine{
-    display: block !important;
 }
 .container .displayer{
     width: 980px;
@@ -50,7 +46,7 @@ p{
     width: 2940px;
     height: 720px;
     position: relative;
-    left: -1960px;
+    left: 0;
 }
 .container .displayer .rotator .barrageContainer,
 .container .displayer .rotator .wallContainer,
@@ -62,7 +58,7 @@ p{
 }
 #wall{
     width: 900px;
-    height: 600px;
+    height: 560px;
     background-color: rgba(256,256,256,0.3);
     margin: 0 auto;
     padding: 20px;
@@ -78,9 +74,9 @@ p{
     width: 1070px;
     margin: 0 auto;
     position: relative;
-    top: -80px;
-    left: -65px;
-    z-index: 100;
+    top: -197px;
+    left: -40px;
+    z-index: -1;
 }
 #shadow img{
     width: 1070px;
@@ -88,3 +84,26 @@ p{
 #example_video_1{
   margin: 0 auto;
 }
+
+#point{
+
+}
+#point li{
+    float: left;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
