@@ -411,35 +411,35 @@
 /*抽奖部分*/
 
 .slotMachine{
-    width: 800px;
-    height: 520px;
-    margin: 100px auto 0;
+    width: 940px;
+    height: 600px;
+    margin: 0 auto;
     position: relative;
     background: url("../../img/raffle.png") no-repeat;
 }
 .slotMachine .winning{
-    width: 363px;
-    height: 202px;
+    width: 464px;
+    height: 251px;
     position: absolute;
-    top: 204px;
-    left: 194px;
+    top: 231px;
+    left: 207px;
     overflow: hidden;
     cursor: default;
 }
 .slotMachine .frame{
-    width: 443px;
+    width: 525px;
     height: 57px;
     background: url("../../img/frame.png") no-repeat;
     position: absolute;
-    top: 277px;
-    left: 155px;
+    top: 330px;
+    left: 179px;
 }
 .slotMachine .button{
     width: 60px;
     height: 60px;
     position: absolute;
-    top: 225px;
-    left: 601px;
+    top: 259px;
+    left: 716px;
 }
 .slotMachine .candidate{
     border-radius: 10px;
@@ -455,7 +455,7 @@
     top: -75px;
     color: #fff;
     padding : 0 auto;
-    width : 363px;
+    width: 464px;
 }
 .slotMachine .candidate.pitch{
     background-image: -moz-linear-gradient( 90deg, rgb(255,114,58) 0%, rgb(255,157,62) 100%);
@@ -463,8 +463,105 @@
     background-image: -ms-linear-gradient( 90deg, rgb(255,114,58) 0%, rgb(255,157,62) 100%);
 }
 
+.containerAppear{
+    -webkit-animation: containerAppear 1s;
+    -moz-animation: containerAppear 1s;
+    -o-animation: containerAppear 1s;
+    animation: containerAppear 1s;
+}
+.containerDisappear{
+    -webkit-animation: containerDisappear 1s;
+    -moz-animation: containerDisappear 1s;
+    -o-animation: containerDisappear 1s;
+    animation: containerDisappear 1s;
+}
+.candidatenum{
+    -webkit-transition: transform linear;
+    -moz-transition: transform linear;
+    -ms-transition: transform linear;
+    -o-transition: transform linear;
+    transition: transform linear;
+    transform: translateY(71px);
+}
 
+@-webkit-keyframes containerAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 
+}
 
+@-o-keyframes containerAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
+
+@-moz-keyframes containerAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
+
+@keyframes containerAppear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+
+}
+
+@-webkit-keyframes containerDisappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+
+}
+
+@-o-keyframes containerDisappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+
+}
+
+@-moz-keyframes containerDisappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+
+}
+
+@keyframes containerDisappear {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+
+}
 
 

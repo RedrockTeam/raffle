@@ -10,19 +10,19 @@ var w = $(window);
 
 //弹幕数量
 
-var slideNum = 0;
+var slideNum;
 
 //弹幕队列初始化
 
-var slideQueue = [],fixQueue = [];
+var slideQueue,fixQueue;
 
 //弹幕进行中队列
 
-var UnderwayQueue = {};
+var UnderwayQueue;
 
 //等待队列初始化
 
-var slideWaitQueue = [],fixWaitQueue = [];
+var slideWaitQueue,fixWaitQueue;
 
 //弹幕函数
 
@@ -155,23 +155,13 @@ function slide (obj,text,textStyle,slideStyle){
 
             dom.css("left",obj.width()).css("transform","translateX("+parseInt(-obj.width()-width)+"px)");
 
-            //滑动弹幕发射
+            //弹幕结束，删除结点
 
-            //dom.animate({
-            //
-            //    left:-width,
-            //
-            //},time,"linear",function(){
-            //
-            //    //弹幕结束，删除结点
-            //
-            //    dom.remove();
-            //
-            //    //删除行进队列中数据
-            //
-            //    delete UnderwayQueue[dom.attr("slideNum")];
-            //
-            //});
+            setTimeout(function(){
+
+                dom.remove();
+
+            },12000);
 
         }else{
 
@@ -191,29 +181,33 @@ function slide (obj,text,textStyle,slideStyle){
 
                 delete UnderwayQueue[dom.attr("slideNum")];
 
-                //判断改队列是否被删除
+                setTimeout(function(){
 
-                if (Queue[heightNum] != undefined) {
+                    //判断改队列是否被删除
 
-                    //空出队列
+                    if (Queue[heightNum] != undefined) {
 
-                    Queue[heightNum] = 1;
+                        //空出队列
 
-                    //判断等待队列中是否还有等待弹幕
+                        Queue[heightNum] = 1;
 
-                    var returnObj = WaitQueue.shift();
+                        //判断等待队列中是否还有等待弹幕
 
-                    if(returnObj){
+                        var returnObj = WaitQueue.shift();
 
-                        //有等待弹幕，进入下一条弹幕
+                        if(returnObj){
 
-                        slide (returnObj.obj,returnObj.text,returnObj.textStyle,returnObj.slideStyle);
+                            //有等待弹幕，进入下一条弹幕
 
-                    }
+                            slide (returnObj.obj,returnObj.text,returnObj.textStyle,returnObj.slideStyle);
 
-                };
+                        }
 
-            },3000);
+                    };
+
+                },500);
+
+            },5000);
 
         }
 
@@ -234,6 +228,22 @@ function slide (obj,text,textStyle,slideStyle){
 
 function creatScreen(obj){
 
+    //弹幕数量
+
+    slideNum = 0;
+
+    //弹幕队列初始化
+
+    slideQueue = [],fixQueue = [];
+
+    //弹幕进行中队列
+
+    UnderwayQueue = {};
+
+    //等待队列初始化
+
+    slideWaitQueue = [],fixWaitQueue = [];
+
     var Screen;//弹幕容器
 
     (function barrage(){
@@ -253,26 +263,6 @@ function creatScreen(obj){
                 "cursor" : "default",
 
             },
-
-        }).appendTo(obj);
-
-        //底部标识
-
-        $("<p>",{
-
-            css:{
-
-                "text-align": "center",
-                "color": "#ccc",
-                "line-height": "35px",
-                "position": "relative",
-                "top": "15px",
-                "width": "200px",
-                "margin": "0 auto",
-
-            },
-
-            html:"弹幕支持 &nbsp;&nbsp;@ RedRock . Grallen ",
 
         }).appendTo(obj);
 
@@ -874,9 +864,9 @@ function creatWall (obj){
 
         }).appendTo(obj);
 
-        wallHeight = Math.floor((parseInt(wall.css("height"))-60)/90);
+        wallHeight = Math.floor((560-60)/90);
 
-        wallWidth = Math.floor((parseInt(wall.css("width"))-80)/40);
+        wallWidth = Math.floor((900-80)/40);
 
         for(var i = 0; i < wallHeight; i++){
 
@@ -936,7 +926,7 @@ var list;
 
 function drawARaffle(obj){
 
-    $($(".winning p")[2]).removeClass("pitch");
+    $(".winning p").removeClass("pitch");
 
     //动画开始移除按钮点击事件
 
@@ -946,7 +936,7 @@ function drawARaffle(obj){
 
     var winnerNum = Math.ceil(Math.random()*1000)+100;
 
-    slotMachine(obj,winnerNum,list);
+    slotMachine(obj,1,list);
 
 }
 
@@ -958,17 +948,11 @@ function slotMachine(obj,winnerNum,list){
 
     if(winnerNum > 0){
 
-        //该动画时间
-
         var time = 1000/winnerNum;
 
         //候选人名单
 
         var candidate;
-
-        //线
-
-        var line;
 
         //获取新的候选人姓名
 
@@ -992,9 +976,7 @@ function slotMachine(obj,winnerNum,list){
 
         candidate = $(obj.winning).children("p");
 
-        //获取线
-
-        line = $(obj.winning).children("div");
+        candidate.removeClass("candidatenum");
 
         //开始滚动
 
@@ -1002,15 +984,11 @@ function slotMachine(obj,winnerNum,list){
 
             //目标属性
 
-            var topPX,lineTopPX,transformDEG;
+            var topPX;
 
             //当前节点
 
             var p = $(candidate[i]);
-
-            //当前线
-
-            var liner = $(line[i]);
 
             //当前节点的编号
 
@@ -1018,13 +996,11 @@ function slotMachine(obj,winnerNum,list){
 
             //删除多余节点
 
-            if(num > 4){
+            if(num > 6){
 
                 setTimeout(function(){
 
                     p.remove();
-
-                    liner.remove();
 
                 },50);
 
@@ -1036,38 +1012,32 @@ function slotMachine(obj,winnerNum,list){
 
             switch (num){
                 case 0:
-                    topPX = "-75px";break;
+                    topPX = "-116px";break;
                 case 1:
-                    topPX = "-5px";break;
+                    topPX = "-45px";break;
                 case 2:
-                    topPX = "71px";break;
+                    topPX = "26px";break;
                 case 3:
-                    topPX = "148px";break;
+                    topPX = "97px";break;
                 case 4:
-                    topPX = "220px";break;
+                    topPX = "168px";break;
+                case 5:
+                    topPX = "239px";break;
+                case 6:
+                    topPX = "310px";break;
                 default :
-                    topPX = "390px";break;
+                    topPX = "381px";break;
             }
+
+            p.css("top",topPX);
 
             //当前节点的编号更新
 
             p.attr("num",++num);
 
-            //开始滚动
-
-            p.animate({
-
-                top:topPX
-
-            },time,"linear");
-
-            liner.animate({
-
-                top:lineTopPX
-
-            },time,"linear");
-
         }
+
+        candidate.addClass("candidatenum").css("transition-duration",1/winnerNum+"s");
 
         //该动画执行完成 执行下一个动画
 
@@ -1091,7 +1061,7 @@ function slotMachine(obj,winnerNum,list){
 
         setTimeout(function(){
 
-            $($(".winning p")[2]).addClass("pitch");
+            $($(".winning p")[3]).addClass("pitch");
 
         },400);
 

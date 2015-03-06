@@ -18,53 +18,42 @@
 </head>
 <body>
 
-
   <div class="container">
 
-    <img src="img/left.png" alt="left" class="left" title="" style="display: none;"/>
-    <img src="img/right.png" alt="right " class="right" title="前往上墙页面"/>
+    <div class="barrageContainer">
 
-    <div class="displayer">
-
-      <div class="rotator">
-
-        <div class="barrageContainer">
-
-          <div id="barrage">
-            <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="940" height="600"
-            poster="http://video-js.zencoder.com/oceans-clip.png"
-            data-setup="{}">
-              <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
-              <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
-              <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
-            </video>
-          </div>
-
-
-        </div>
-        <div class="wallContainer">
-          <div id="wall">
-          </div>
-        </div>
-        <div class="slotMachineContainer">
-
-
-        </div>
-      </div>
-
-
-      <div id="shadow">
-        <img src="img/shadow.png"/>
+      <div id="barrage">
+        <video id="example_video_1" class="video-js vjs-default-skin" controls preload="none" width="940" height="600"
+               poster="http://video-js.zencoder.com/oceans-clip.png"
+               data-setup="{}">
+          <source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+          <source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+          <source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+        </video>
       </div>
 
     </div>
+    <div class="wallContainer" style="display: none">
+      <div id="wall">
+      </div>
+    </div>
+    <div class="slotMachineContainer" style="display: none">
+
+
+    </div>
+
+    <div id="shadow">
+      <img src="img/shadow.png"/>
+    </div>
+
 
     <ul id="point">
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
+      <li num="1"></li>
+      <li num="2"></li>
+      <li num="3"></li>
     </ul>
 
   </div>
+
 </body>
 </html>
