@@ -265,21 +265,51 @@ window.onload = function() {
 
 			case 3:
 
-				//建立老虎机
-
-				var SlotMachine = creatSlotMachine($(".slotMachineContainer")[0]);
-
 				//参加活动名单
 
 				list = ["grallen", "cindy", "betty", "james", "allen", "cody", "coco", "deff", "green", "iverson"];
+
+				//建立老虎机
+
+				var SlotMachine = creatSlotMachine($(".slotMachineContainer")[0],list);
 
 				//滚上默认数据
 
 				setTimeout(function(){
 
-					slotMachine(SlotMachine, 8, list);
+					putList (SlotMachine.list,list);
 
-				},2000);
+				},50);
+
+				//给确定按钮绑定事件
+
+				$(".screen .confirm").on("click",function(){
+
+					$(".prize").hide("nomal",function(){
+
+						$(".screen").css("display","none");
+
+					});
+
+				});
+
+				// 给按钮绑定点击事件
+
+				$(SlotMachine.button).on("click",function(){
+
+					animateButton($(SlotMachine.button));
+
+					SlotMachine.joysticks.addClass("joysticksAnimate");
+
+					setTimeout(function(){
+
+						SlotMachine.joysticks.removeClass("joysticksAnimate");
+
+					},1850);
+
+					drawARaffle(SlotMachine,list);
+
+				}).css("cursor","pointer");
 
 				break;
 

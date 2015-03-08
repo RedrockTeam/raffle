@@ -940,145 +940,6 @@ function drawARaffle(obj){
 
 }
 
-//老虎机函数
-
-function slotMachine(obj,winnerNum,list){
-
-    //判断动画是否应该结束
-
-    if(winnerNum > 0){
-
-        var time = 1000/winnerNum;
-
-        //候选人名单
-
-        var candidate;
-
-        //获取新的候选人姓名
-
-        var newCandidate = list.shift();
-
-        list.push(newCandidate);
-
-        //添加新的候选人
-
-        $("<p>",{
-
-            "num":0,
-
-            "class":"candidate",
-
-            html:newCandidate
-
-        }).appendTo($(obj.winning));
-
-        //获取候选人
-
-        candidate = $(obj.winning).children("p");
-
-        candidate.removeClass("candidatenum");
-
-        //开始滚动
-
-        for(var i = candidate.length - 1; i >= 0;i-- ) {
-
-            //目标属性
-
-            var topPX;
-
-            //当前节点
-
-            var p = $(candidate[i]);
-
-            //当前节点的编号
-
-            var num = parseInt(p.attr("num"));
-
-            //删除多余节点
-
-            if(num > 6){
-
-                setTimeout(function(){
-
-                    p.remove();
-
-                },50);
-
-                break;
-
-            }
-
-            //设定动画css属性
-
-            switch (num){
-                case 0:
-                    topPX = "-116px";break;
-                case 1:
-                    topPX = "-45px";break;
-                case 2:
-                    topPX = "26px";break;
-                case 3:
-                    topPX = "97px";break;
-                case 4:
-                    topPX = "168px";break;
-                case 5:
-                    topPX = "239px";break;
-                case 6:
-                    topPX = "310px";break;
-                default :
-                    topPX = "381px";break;
-            }
-
-            p.css("top",topPX);
-
-            //当前节点的编号更新
-
-            p.attr("num",++num);
-
-        }
-
-        candidate.addClass("candidatenum").css("transition-duration",1/winnerNum+"s");
-
-        //该动画执行完成 执行下一个动画
-
-        setTimeout(function(){
-
-            //计数器减一
-
-            winnerNum--;
-
-            //再次执行
-
-            slotMachine(obj,winnerNum,list)
-
-        },time);
-
-    }else{
-
-        //动画执行完毕
-
-        //给中奖人添加css
-
-        setTimeout(function(){
-
-            $($(".winning p")[3]).addClass("pitch");
-
-        },400);
-
-        // 给按钮绑定点击事件
-
-        $(obj.button).on("click",function(){
-
-            animateButton($(obj.button));
-
-            drawARaffle(obj);
-
-        }).css("cursor","pointer");
-
-    }
-
-}
-
 //建立老虎机
 
 function creatSlotMachine (obj){
@@ -1087,9 +948,13 @@ function creatSlotMachine (obj){
 
     var winning;        //获奖区域
 
+    var list;           //人员名单
+
     var frame;          //中奖框
 
     var button;         //开始按钮
+
+    var joysticks;      //游戏杆
 
     (function (){
 
@@ -1109,6 +974,14 @@ function creatSlotMachine (obj){
 
         }).appendTo(slotMachine);
 
+        //人员名单
+
+        list = $("<div>",{
+
+            "class":"list",
+
+        }).appendTo(winning);
+
         //中奖框
 
         frame = $("<div>",{
@@ -1117,7 +990,17 @@ function creatSlotMachine (obj){
 
         }).appendTo(slotMachine);
 
-        //中奖框
+        //游戏杆
+
+        joysticks = $("<img>",{
+
+            "class":"joysticks",
+
+            "src" : "img/joysticks.png",
+
+        }).appendTo(slotMachine);
+
+        //抽奖按钮框
 
         button = $("<img>",{
 
@@ -1135,65 +1018,17 @@ function creatSlotMachine (obj){
 
     returnData.winning = winning;
 
+    returnData.list = list;
+
     returnData.frame = frame;
 
     returnData.button = button;
 
+    returnData.joysticks = joysticks;
+
     return returnData;
 
 }
-
-//3D旋转动画 每次调用旋转15度 (一次性函数) 5帧
-//
-//function animateTransform (obj,rotateX,time) {
-//
-//    if(time < 50){
-//
-//        rotateX += 15 ;
-//
-//        obj.css("transform","rotateX("+rotateX+"deg)");
-//
-//    }else{
-//
-//        var frameNum = time*0.02;
-//
-//        var eachRotateX = 15/frameNum;
-//
-//        animateTransformFrame(obj,rotateX,rotateX,eachRotateX,frameNum);
-//
-//    }
-//
-//}
-//
-//function animateTransformFrame (obj,rotateX,original,each,num){
-//
-//    if(num > 1){
-//
-//        original -= each;
-//
-//        var color = Math.ceil((60-Math.abs(original))/0.9);
-//
-//        obj.css("transform","rotateX("+original+"deg)").css("color","rgb("+color+","+color+","+color+")");
-//
-//        num--;
-//
-//        setTimeout(function(){
-//
-//            animateTransformFrame (obj,rotateX,original,each,num);
-//
-//        },50);
-//
-//    }else{
-//
-//        rotateX -= 15;
-//
-//        var color = Math.ceil((60-Math.abs(original))/0.9);
-//
-//        obj.css("transform","rotateX("+rotateX+"deg)").css("color","rgb("+color+","+color+","+color+")");
-//
-//    }
-//
-//}
 
 //按钮动画效果
 
@@ -1201,19 +1036,119 @@ function animateButton (obj){
 
     obj.animate({
 
-        top:"264px"
+        top:"305px"
 
-    },250,"linear",function(){
+    },250,"swing",function(){
 
         obj.animate({
 
-            top:"225px"
+            top:"259px"
 
-        },800,"linear");
+        },1600,"linear");
 
     });
 
 }
 
+//建立名单
+
+function putList (obj,list) {
+
+    for (var i = 0;i < 300;i++) {
+
+        var newCandidate = list.shift();
+
+        list.push(newCandidate);
+
+        $("<p>", {
+
+            "class": "candidate",
+
+            "text": newCandidate
+
+        }).appendTo(obj);
+
+    }
+
+}
+
+//老虎机函数
+
+function slotMachine(obj,time){
+
+    var top = 70*time;
+
+    obj.addClass("candidatenum").css("transform","translateY("+top+"px)");
 
 
+}
+
+//抽奖函数
+
+function drawARaffle(obj,list){
+
+    obj.list.children("p").removeClass("pitch");
+
+    //动画开始移除按钮点击事件
+
+    $(obj.button).unbind("click").css("cursor","default");
+
+    //中奖对象 编号
+
+    var winnerNum = Math.ceil(Math.random()*200)+90;
+
+    slotMachine(obj.list,winnerNum);
+
+    setTimeout(function(){
+
+        //动画执行完毕
+
+        //给中奖人添加css
+
+        $(obj.list.children("p")[297-winnerNum]).addClass("pitch");
+
+        var winner = $(obj.list.children("p")[297-winnerNum]).html();
+
+        // 给按钮绑定点击事件
+
+        setTimeout(function(){
+
+            $(".screen span").html(winner);
+
+            $(".screen").css("display","flex");
+
+            $(".prize").show("nomal");
+
+            $(obj.button).on("click",function(){
+
+                obj.list.remove();
+
+                obj.list = $("<div>",{
+
+                    "class":"list",
+
+                }).appendTo(obj.winning);
+
+                obj.joysticks.addClass("joysticksAnimate");
+
+                setTimeout(function(){
+
+                    obj.joysticks.removeClass("joysticksAnimate");
+
+                },1850);
+
+                //新的list数组获取位置
+
+                putList (obj.list,list);
+
+                animateButton($(obj.button));
+
+                drawARaffle(obj,list);
+
+            }).css("cursor","pointer");
+
+        },400);
+
+    },15500);
+
+}
